@@ -18,7 +18,7 @@ class pathFinder
      */
     public function pathExists(array $a, array $b): bool
     {
-        // одна из точек вне карты или "стена"
+        // одна из начальных точек вне карты или "стена"
         if (!$this->isWay($a) || !$this->isWay($b)) {
             return false;
         }
@@ -71,7 +71,7 @@ class pathFinder
     private function isWay(array $point): bool
     {
         return isset($this->map[$point[0]][$point[1]]) &&   // точка находится внутри карты
-            $this->map[$point[0]][$point[1]] == '_';        // "дорожка"
+            $this->map[$point[0]][$point[1]] === '_';       // "дорожка"
     }
 
     /**
@@ -82,7 +82,7 @@ class pathFinder
      */
     private function goal(array $a, array $b): bool
     {
-        return $a[0] == $b[0] && $a[1] == $b[1];
+        return $a[0] === $b[0] && $a[1] === $b[1];
     }
 
     /**
